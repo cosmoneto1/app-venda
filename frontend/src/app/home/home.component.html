@@ -1,0 +1,53 @@
+<app-nav></app-nav>
+
+<div class="container mb-4 vh80">
+
+  <h1 class="my-4">
+    <small>Vendas</small>
+  </h1>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="javascript:void(0)" [routerLink]="['/home']">Home</a>
+      </li>
+      <li class="breadcrumb-item active" *ngIf="!!code" aria-current="page">Mobile</li>
+    </ol>
+  </nav>
+
+
+  <div class="row" *ngIf="!code">
+    <div class="col">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Pesquisa por modelo" [(ngModel)]="pesquisa" aria-label="Pesquisa" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <span class="input-group-text" id="basic-addon2">
+            <i class="fas fa-search"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 col-sm-6 portfolio-item mb-3" *ngFor="let item of list | search: 'model' :pesquisa">
+      <div class="card h-100">
+        <a href="javascript:void(0)">
+          <img class="card-img-top custom-img" [src]="item.photo" onError="this.src='https://static1.squarespace.com/static/5317b571e4b01396b757268a/535ed193e4b081613fd31a34/535ed193e4b081613fd31a39/1398722779508/photo-placeholder.png';"
+            alt="">
+        </a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="javascript:void(0)" [routerLink]="['/home', item.code]">{{item.model}}</a>
+          </h4>
+          <p class="card-text"> {{item.brand}}</p>
+          <p class="card-text"> {{item.date}}</p>
+          <p class="card-text">{{item.price | currency:'R$ '}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<app-footer></app-footer>

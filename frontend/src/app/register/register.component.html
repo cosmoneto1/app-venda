@@ -1,0 +1,74 @@
+<app-nav></app-nav>
+
+<div class="container mb-4 vh80">
+
+    <h1 class="my-4">
+        <small>Cadastro</small>
+    </h1>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="javascript:void(0)" [routerLink]="['/home']">Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Cadastro mobile</li>
+        </ol>
+    </nav>
+
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <form [formGroup]="mobileForm" (ngSubmit)="onSubmit()">
+
+                <div class="form-group">
+                    <label for="model">Modelo</label>
+                    <input type="text" formControlName="model" [(ngModel)]="mob.model" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.model.errors }"
+                    />
+                    <div *ngIf="submitted && f.model.errors" class="invalid-feedback">
+                        <div *ngIf="f.model.errors.required"> Obrigatório</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="brand">Marca</label>
+                    <input type="text" formControlName="brand" [(ngModel)]="mob.brand" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.brand.errors }"
+                    />
+                    <div *ngIf="submitted && f.brand.errors" class="invalid-feedback">
+                        <div *ngIf="f.brand.errors.required"> Obrigatório</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="price">Preço</label>
+                    <input type="text" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left', allowZero: false, precision: 2 }"
+                        formControlName="price" [(ngModel)]="mob.price" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.price.errors }"
+                    />
+                    <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
+                        <div *ngIf="f.price.errors.required"> Obrigatório</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="photo">Foto</label>
+                    <input type="text" formControlName="photo" [(ngModel)]="mob.photo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.photo.errors }"
+                    />
+                    <div *ngIf="submitted && f.photo.errors" class="invalid-feedback">
+                        <div *ngIf="f.photo.errors.required"> Obrigatório</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button [disabled]="loading" type="submit" class="btn btn-success">Salvar</button>
+                    <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+                    />
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+
+</div>
+
+<app-footer></app-footer>
