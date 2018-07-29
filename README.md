@@ -17,5 +17,9 @@ $ cd backend && npm install && npm start
 Build docker.
 
 ```sh
-$ cd backend && docker build . -t app-venda && docker run -p 3000:3000 app-venda
+$ cd backend && docker build . -t app-venda && docker run -p 3000:3000 -d app-venda
 ```
+
+![Screenshot](page1.png)
+![Screenshot](page2.png)
+![Screenshot](page3.png)
